@@ -14,17 +14,20 @@ def initialize_llm(model_type):
     return Groq(model=model_type, api_key=api_key)
 
 def summarize_text(llm, text, summary_type):
-    if summary_type == "Long Summary":
-        prompt = f"Give a summary of the text: {text}"
-    elif summary_type == "Short Summary":
-        prompt = f"Give a 100 word summary of the text: {text}"
-    elif summary_type == "Creative Summary":
-        prompt = f"Give a creative summary of the text: {text}"
-    elif summary_type == "Bullet Point Summary":
-        prompt = f"Give a summary of the text in 3 bullet points: {text}"
-
-    response = llm.complete(prompt)
-    return response
+    try:
+        if summary_type == "Long Summary":
+            prompt = f"Give a summary of the text: {text}"
+        elif summary_type == "Short Summary":
+            prompt = f"Give a 100 word summary of the text: {text}"
+        elif summary_type == "Creative Summary":
+            prompt = f"Give a creative summary of the text: {text}"
+        elif summary_type == "Bullet Point Summary":
+            prompt = f"Give a summary of the text in 3 bullet points: {text}"
+        
+        response = llm.complete(prompt)
+        return response
+    except Exception as e:
+        return f"❌ Error: {e}"
 
 def extract_text_from_pdf(pdf_file):
     text = ""
