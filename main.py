@@ -52,15 +52,15 @@ else:
 text_area = st.text_area("Extracted text from PDF", value=extracted_text, height=300, disabled=True)
 
 # Dropdown for summary type
-summary_type = st.selectbox(
-    "Select Summary Type",
-    ("Long Summary", "Short Summary", "Creative Summary", "Bullet Point Summary")
+model_type = st.selectbox(
+    "Select Model Type",
+    ("llama3-8b-8192", "llama3-70b-8192", "mixtral-8x7b-32768")
 )
 
 # Dropdown for model type
 model_type = st.selectbox(
     "Select Model Type",
-    ("Gemma-7b-It", "llama3-70b-8192", "Mixtral-8x7b-32768")
+    ("llama3-8b-8192", "llama3-70b-8192", "mixtral-8x7b-32768")
 )
 
 # Initialize the selected model
